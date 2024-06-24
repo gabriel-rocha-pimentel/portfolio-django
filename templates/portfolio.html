@@ -1,0 +1,83 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Gabriel Rocha | Portfolio</title>
+</head>
+<body>
+<div class="ui attached menu">
+    <a href="{% url 'home' %}" class="item">Gabriel Rocha</a>
+    <a href="{% url 'home' %}" class="item">Home</a>
+    <a href="{% url 'portfolio' %}" class="item">Portfolio</a>
+
+    <div class="right menu">
+        <div class="ui right aligned category search item">
+            <form action="{% url 'search' %}" method="get" class="ui transparent icon input">
+                <input class="prompt" type="text" name="q" placeholder="Pesquisar projeto...">
+                <i class="search link icon"></i>
+            </form>
+        </div>
+        <a href="https://www.linkedin.com/in/gabrielrochapimentel/" target="_blank" id="linkedin"
+           class="item">Linkedin</a>
+        <a href="https://github.com/gabriel-rocha-pimentel" target="_blank" id="github" class="item">GitHub</a>
+        <a href="{% static 'download/dev_frontend_gabriel-rocha.pdf' %}" download class="item">Baixar Curriculo</a>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui container">
+    <div class="ui stackable grid">
+        <div class="four wide column">
+            <div class="ui fluid vertical pointing menu">
+                <a href="{% url 'portfolio' %}" class="item active">PROJETOS</a>
+                {% for categoria in categorias %}
+                <a href="{% url 'categoria' categoria.id %}" class="item">{{ categoria }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="twelve wide column">
+            {% if categoria %}
+            <h1>{{ categoria }}</h1>
+            {% endif %}
+
+            <div class="ui two column stackable grid">
+                {% for projeto in projetos %}
+                <div class="column">
+                    <div class="ui card fluid">
+                        <div class="content">
+                            <h2 class="left floated meta header">{{ projeto.titulo }}</h2>
+                            <p class="right floated meta">{{ projeto.data|date:"d M Y" }}</p>
+                        </div>
+                        <div class="image">
+                            <img src="{{ projeto.imagem.url }}" alt="imagem do projeto" class="imagem">
+                        </div>
+                        <div class="content description">
+                            <p>{{ projeto.descricao }}</p>
+                        </div>
+                        <div class="left floated extra content">
+                            {% if projeto.url %}
+                            <a href="{{ projeto.url }}" target="_blank" class="ui fluid button" tabindex="0">Ver
+                                Online</a>
+                            {% else %}
+                            <button class="ui fluid button disabled" tabindex="0">Sem link disponível</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

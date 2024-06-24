@@ -1,0 +1,54 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radley:ital@0;1&display=swap" rel="stylesheet">
+    <title>Gabriel Rocha | Home</title>
+</head>
+<body>
+<div class="ui attached menu">
+    <a href="{% url 'home' %}" class="item">Gabriel Rocha</a>
+    <a href="{% url 'home' %}" class="item">Home</a>
+    <a href="{% url 'portfolio' %}" class="item">Portfolio</a>
+
+    <div class="right menu">
+        <div class="ui right aligned category search item">
+            <form action="{% url 'search' %}" method="get" class="ui transparent icon input">
+                <input class="prompt" type="text" name="q" placeholder="Pesquisar projeto...">
+                <i class="search link icon"></i>
+            </form>
+        </div>
+        <a href="https://www.linkedin.com/in/gabrielrochapimentel/" target="_blank" id="linkedin"
+           class="item">Linkedin</a>
+        <a href="https://github.com/gabriel-rocha-pimentel" target="_blank" id="github" class="item">GitHub</a>
+        <a href="{% static 'download/dev_frontend_gabriel-rocha.pdf' %}" download class="item">Baixar Curriculo</a>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="box-container">
+    <div class="container-home">
+        <h1 class="home-title"><span class="title">Hello,</span> I am Gabriel</h1>
+        <p class="home-info">
+            Sou Gabriel Rocha Pimentel, 21 anos, entusiasta de desenvolvimento de software.
+            Através do freecodecamp.org, estou dominando React, Sass, CSS, HTML e JavaScript,
+            tenho o objetivo de me tornar um dev full-stack, busquei na Solyd Academy o conhecimento necessário.
+            Conhecimentos esses que são, Django, Python e APIs.
+            Estou disponível como desenvolvedor web freelancer e também estou em busca de oportunidades de trabalho,
+            pronto para trazer minha paixão e habilidades para seus projetos.
+        </p>
+
+        <a href="{% url 'portfolio' %}" class="ui primary button">Portfolio <i class="right arrow icon"></i></a>
+    </div>
+</div>
+</body>
+</html>
