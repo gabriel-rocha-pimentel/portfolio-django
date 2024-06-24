@@ -59,14 +59,14 @@
                             <p class="right floated meta">{{ projeto.data|date:"d M Y" }}</p>
                         </div>
                         <div class="image">
-                            <img src="{{ projeto.imagem.url }}" alt="imagem do projeto" class="imagem">
+                            <img src="{{ projeto.imagem }}" alt="imagem do projeto" class="imagem">
                         </div>
                         <div class="content description">
                             <p>{{ projeto.descricao }}</p>
                         </div>
                         <div class="left floated extra content">
                             {% if projeto.url %}
-                            <a href="{{ projeto.url }}" target="_blank" class="ui fluid button" tabindex="0">Ver
+                            <a href="{{ projeto.link }}" target="_blank" class="ui fluid button" tabindex="0">Ver
                                 Online</a>
                             {% else %}
                             <button class="ui fluid button disabled" tabindex="0">Sem link disponível</button>
