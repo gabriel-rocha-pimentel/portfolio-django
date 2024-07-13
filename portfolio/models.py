@@ -28,4 +28,3 @@ class Projeto(models.Model):
     class Meta:
         verbose_name_plural = "Projetos"
         ordering = ['-id']
-

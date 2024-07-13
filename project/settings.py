@@ -11,7 +11,7 @@ environ.Env.read_env(env_file)
 
 env = environ.Env()
 
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG', default=True)
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
@@ -100,9 +100,9 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles")
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "staticfiles")
+# ]
 
 
 # Default primary key field type
